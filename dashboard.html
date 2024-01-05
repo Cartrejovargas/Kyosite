@@ -1,0 +1,28 @@
+<?php
+require('db.php');
+include("auth.php");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body>
+  <section class="wrapper style4 container">
+  <div class="form">
+    <p>Dashboard</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png"/ height="100">
+    <p>Hello <span id="highlight"><?php echo $_SESSION['username']; ?></span>!</p>
+    <p> </p>
+    <h1>Membership: <span id="highlight">Basic</span></h2>
+    <p>Donate to upgrade your membership!</p>
+    <p><a href="index.php">Home</a></p>
+    <a href="logout.php">Logout</a>
+  </section>
+  </div>
+</body>
+</html>

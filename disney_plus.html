@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<head>
+  <link rel="stylesheet" href="Main.css" />
+  	<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+    <link href="Movies_style.css" rel="stylesheet" type="text/css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<section class="wrapper style4 container">
+<body>
+  <h1>Crunchyroll Accounts</h1>
+  <h2>Please Do Not Change The Passwords</h2>
+<div>
+  <button onclick="findAccount(),this.disabled = true; return true;" type="randomAccount">Generate</button>
+  <p></p>
+  <input "randomAccount" id="randomAccount">
+  <input "randomPassword" id="randomPassword">
+</div>
+<!-- Last variable is not shown -->
+<script>
+function findAccount() {
+    var Account = ["shemelewski@gmail.com","sheritagems@gmail.com","sherzod11209@gmail.com","shijing15@gmail.com","slowpoke2006@gmail.com","snellerich@gmail.com","some1979guy@yahoo.com","Accoun10"];
+    var Password = ["9Tails1995 ","market115","Rattler1@ ","Airdurant35","mes15229ccs","Erich@4656","Kids990209$","Account10"]
+
+    var random = Math.floor(Math.random() * (Account.length - 1));
+    document.getElementById("randomAccount").setAttribute("value", Account[random]);
+    document.getElementById("randomPassword").setAttribute("value", Password[random]);
+}
+</script>
+</body>
+</section>
+</html>

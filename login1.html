@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>KyoSite</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="Folderz2/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="Folderz2/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="Folderz2/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="Folderz2/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="Folderz2/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="Folderz2/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="Folderz2/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="Folderz2/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="Folderz2/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="Folderz2/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Folderz2/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="Folderz2/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Folderz2/favicon-16x16.png">
+    <link rel="manifest" href="Folderz2/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="Folderz2/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="script.js"></script> 
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+<body>
+<header class="special container">
+<?php
+require('db.php');
+session_start();
+// If form submitted, insert values into the database.
+if (isset($_POST['username'])){
+        // removes backslashes
+ $username = stripslashes($_REQUEST['username']);
+        //escapes special characters in a string
+ $username = mysqli_real_escape_string($con,$username);
+ $password = stripslashes($_REQUEST['password']);
+ $password = mysqli_real_escape_string($con,$password);
+ //Checking is user existing in the database or not
+        $query = "SELECT * FROM `users` WHERE username='$username'
+and password='".md5($password)."'";
+ $result = mysqli_query($con,$query) or die(mysql_error());
+ $rows = mysqli_num_rows($result);
+        if($rows==1){
+     $_SESSION['username'] = $username;
+            // Redirect user to index.php
+     header("Location: index.php");
+         }else{
+ echo "<div class='form'>
+<h3>Username/password is incorrect.</h3>
+<br/>Click here to <a href='login.php'>Login</a></div>";
+ }
+    }else{
+?>
+<div class="form">
+<h1>Log In</h1>
+<form action="" method="post" name="login">
+<input type="text" name="username" placeholder="Username" required />
+<input type="password" name="password" placeholder="Password" required />
+<input name="submit" type="submit" value="Login" />
+</form>
+<p>Not registered yet? <a href='registration.php'>Register Here</a></p>
+</div>
+<?php } ?>
+<header class="special container">
+</body>
+</html>
